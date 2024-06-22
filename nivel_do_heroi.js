@@ -1,5 +1,3 @@
-const name = "Beowulf";
-const experience = 5000;
 const levels = [
   {
     exp: 1000,
@@ -35,15 +33,17 @@ const levels = [
   },
 ];
 
-let level = 0;
-for (let index = 0; index < levels.length; index++) {
-  const level_current = levels[index];
-  if (experience <= level_current.exp) {
-    level = index;
-    break;
+const level = (experience) => {
+  for (let index = 0; index < levels.length; index++) {
+    const level_current = levels[index];
+    if (experience <= level_current.exp) return index;
   }
-}
+};
 
-console.log(
-  `"O Herói de nome **${name}** está no nível de **${levels[level].name}**"`
-);
+((name = "Beowulf", experience = 5000) => {
+  console.log(
+    `"O Herói de nome **${name}** está no nível de **${
+      levels[level(experience)].name
+    }**"`
+  );
+})();
